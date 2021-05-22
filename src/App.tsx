@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import PastlyForecastBlock from './components/PastlyForecastBlock'
+import NearlyForecastBlock from './components/NearlyForecastBlock'
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <div className="App">
+          <header className="header"><h1 className="title"> Weather <div>forecast</div></h1></header>
+          <main className="main">
+            <NearlyForecastBlock/>
+            <PastlyForecastBlock/>
+          </main>
+          <footer className="footer">C ЛЮБОВЬЮ ОТ MERCURY DEVELOPMENT</footer>
+        </div>
+  )
 }
 
-export default App;
+export default App
