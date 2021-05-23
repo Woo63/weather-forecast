@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import '../NearlyForecastBlock/NearlyForecastBlock.css'
+import '../WeeklyForecastBlock/ForecastBlock.css'
 import SelectCity from '../SelectCity/SelectCity'
 import PlugWeatherForecastCard from '../PlugWeatherForecastCard/PlugWeatherForecastCard'
-import { API_KEY, cityArr, IDayWeather, months } from '../../assets/cityArray'
-import DailyWeatherForecastCard from '../DailyWeatherForecastCard/DailyWeatherForecastCard'
+import { API_KEY, cityArr, IDayWeather, months } from '../../assets/constants'
+import DailyWeatherForecastCard from '../OneDayForecastCard/OneDayForecastCard'
 import InputDate from '../InputDate/InputDate'
 
-function PastlyForecastBlock () {
+function PastForecastBlock () {
   const [city, setCity] = useState<string>('')
   const [date, setDate] = useState<string>('')
   const [time, setTime] = useState<string>('')
@@ -33,14 +33,14 @@ function PastlyForecastBlock () {
     }
   }, [city, time])
 
-  function changeStringToDate () {
+  function stringToFormatDate () {
     const arr = date.split(/[- /.]/)
     return arr[2] + '-' + arr[1] + '-' + arr[0]
   }
 
   useEffect(() => {
     if ((/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](2021)/).exec(date)) {
-      const newDate = new Date(changeStringToDate())
+      const newDate = new Date(stringToFormatDate())
       const nowDate = new Date()
       // проверка на попадание в нужные 5 дней, это 432000000мс
       if (nowDate.getTime() - newDate.getTime() < 432000000) {
@@ -50,7 +50,7 @@ function PastlyForecastBlock () {
     }
   }, [date])
   return (
-    <div className="forecastBlock">
+    <section className="forecastBlock">
       <h2 className="forecastBlock__title">Forecast for a Date in the Past</h2>
       <div className="selectBlock">
         <SelectCity setCity={setCity}/>
@@ -61,8 +61,8 @@ function PastlyForecastBlock () {
           ? <DailyWeatherForecastCard forecast={forecast} className={'past'}/>
           : <PlugWeatherForecastCard/>
       }
-    </div>
+    </section>
   )
 }
 
-export default PastlyForecastBlock
+export default PastForecastBlock

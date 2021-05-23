@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import './NearlyForecastBlock.css'
+import './ForecastBlock.css'
 import SelectCity from '../SelectCity/SelectCity'
 import PlugWeatherForecastCard from '../PlugWeatherForecastCard/PlugWeatherForecastCard'
-import { cityArr, API_KEY, IDayWeather, months } from '../../assets/cityArray'
-import DailyForecastBlock from '../DailyForecastBlock/DailyForecastBlock'
+import { cityArr, API_KEY, IDayWeather, months } from '../../assets/constants'
+import DailyForecastBlock from '../WeeklyForecastGroup/WeeklyForecastGroup'
 
-function NearlyForecastBlock () {
+function WeeklyForecastBlock () {
   const [city, setCity] = useState<string>('')
   const [forecast, setForecast] = useState<IDayWeather[]>([])
   const [loading, setLoading] = useState<boolean>(false)
@@ -38,7 +38,7 @@ function NearlyForecastBlock () {
     }
   }, [city])
   return (
-    <div className="forecastBlock">
+    <section className="forecastBlock">
       <h2 className="forecastBlock__title">7 Days Forecast</h2>
       <SelectCity setCity={setCity}/>
       {
@@ -46,8 +46,8 @@ function NearlyForecastBlock () {
           ? <DailyForecastBlock forecast={forecast}/>
           : <PlugWeatherForecastCard/>
       }
-    </div>
+    </section>
   )
 }
 
-export default NearlyForecastBlock
+export default WeeklyForecastBlock

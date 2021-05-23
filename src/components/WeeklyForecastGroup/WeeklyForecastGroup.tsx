@@ -1,37 +1,40 @@
 import React, { useEffect, useState } from 'react'
-import DailyWeatherForecastCard from '../DailyWeatherForecastCard/DailyWeatherForecastCard'
-import { IDayWeather } from '../../assets/cityArray'
-import './DailyForecastBlock.css'
+import DailyWeatherForecastCard from '../OneDayForecastCard/OneDayForecastCard'
+import { IDayWeather } from '../../assets/constants'
+import './WeeklyForecastGroup.css'
 
-function DailyForecastBlock (props: any) {
+function WeeklyForecastGroup (props: any) {
   const [selectedDayIndex, setSelectedDayIndex] = useState<number>(0)
   const [showButton, setShowButton] = useState<boolean>(true)
   const [disabledNext, setDisabledNext] = useState<boolean>(false)
   const [disabledPrev, setDisabledPrev] = useState<boolean>(true)
+  const rightBound: number = 5
+  const leftBound: number = 0
   function changeDayIndex (next: boolean):void {
     if (next) {
-      if (selectedDayIndex < 5) {
+      if (selectedDayIndex < rightBound) {
         setSelectedDayIndex(selectedDayIndex + 1)
-        if (selectedDayIndex + 1 === 5) {
+        if (selectedDayIndex + 1 === rightBound) {
           setDisabledNext(true)
         }
         if (disabledPrev) setDisabledPrev(false)
       }
     } else {
-      if (selectedDayIndex > 0) {
+      if (selectedDayIndex > leftBound) {
         setSelectedDayIndex(selectedDayIndex - 1)
-        if (selectedDayIndex - 1 === 0) {
+        if (selectedDayIndex - 1 === leftBound) {
           setDisabledPrev(true)
         }
         if (disabledNext) setDisabledNext(false)
       }
     }
   }
-  function showArrow ():void {
-    if ((document.documentElement.clientWidth > 1400) && (!showButton)) {
+  const desktopWidthThreshold = 1400
+  function showArrows ():void {
+    if ((document.documentElement.clientWidth > desktopWidthThreshold) && (!showButton)) {
       setShowButton(true)
     }
-    if ((showButton) && (document.documentElement.clientWidth < 1400)) {
+    if ((showButton) && (document.documentElement.clientWidth < desktopWidthThreshold)) {
       setShowButton(false)
     }
   }
@@ -43,12 +46,12 @@ function DailyForecastBlock (props: any) {
     }
   }
   useEffect(() => {
-    showArrow()
-    window.addEventListener('resize', showArrow)
+    showArrows()
+    window.addEventListener('resize', showArrows)
   })
   return (
-    <div className="containerBlock">
-      <div className="dailyForecastBlock">
+    <div className="dailyForecastBlock">
+      <div className="dailyForecastBlock__cards">
         {props.forecast.map((item: IDayWeather, index: number) => selectedFormCard(index, item))}
       </div>
       {
@@ -63,4 +66,4 @@ function DailyForecastBlock (props: any) {
   )
 }
 
-export default DailyForecastBlock
+export default WeeklyForecastGroup

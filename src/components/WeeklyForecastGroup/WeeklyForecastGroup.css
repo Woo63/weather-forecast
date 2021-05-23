@@ -1,14 +1,14 @@
-.containerBlock {
+.dailyForecastBlock {
     width: 100%;
     overflow-x: scroll;
     position: relative;
 }
 
-.containerBlock::-webkit-scrollbar {
+.dailyForecastBlock::-webkit-scrollbar {
     height: 0;
 }
 
-.dailyForecastBlock {
+.dailyForecastBlock__cards {
     display: inline-flex;
     margin-left: 24px;
 }
@@ -41,13 +41,13 @@
 }
 
 @media (min-width: 320px) and (max-width: 1026px) {
-    .dailyForecastBlock {
+    .dailyForecastBlock__cards {
         margin-left: calc(24px + (58 - 24) * ((100vw - 320px) / (1026 - 320)));
     }
 }
 
 @media (min-width: 1026px) {
-    .dailyForecastBlock {
+    .dailyForecastBlock__cards {
         margin-left: 58px;
     }
 }

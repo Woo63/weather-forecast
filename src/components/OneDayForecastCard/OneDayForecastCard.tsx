@@ -1,7 +1,7 @@
 import React from 'react'
-import './DailyWeatherForecastCard.css'
+import './OneDayForecastCard.css'
 
-function DailyWeatherForecastCard (props: any) {
+function OneDayForecastCard (props: any) {
   return (
       <div className={`dayWeatherCard ${props.className}`}>
         <span className="dayWeatherCard__date">{props.forecast.date}</span>
@@ -11,4 +11,4 @@ function DailyWeatherForecastCard (props: any) {
   )
 }
 
-export default DailyWeatherForecastCard
+export default OneDayForecastCard

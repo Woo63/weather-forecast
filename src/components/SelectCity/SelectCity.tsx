@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { cityArr } from '../../assets/cityArray'
+import { cityArr } from '../../assets/constants'
 import './SelectCity.css'
 
 function SelectCity (props : any) {
