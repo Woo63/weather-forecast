@@ -9,6 +9,20 @@ function WeeklyForecastBlock () {
   const [city, setCity] = useState<string>('')
   const [forecast, setForecast] = useState<IDayWeather[]>([])
   const [loading, setLoading] = useState<boolean>(false)
+
+  function getWeeklyForecast (data: any): IDayWeather[] {
+    const date = new Date()
+    const weatherForecast = []
+    for (let i = 0; i < data.daily.length; i++) {
+      weatherForecast.push({
+        temp: Math.floor(data.daily[i].temp.day),
+        icon: data.daily[i].weather[0].icon,
+        date: date.getDate() + i + ' ' + months[date.getMonth()] + ' ' + date.getFullYear()
+      })
+    }
+    return weatherForecast
+  }
+
   useEffect(() => {
     if (city.length) {
       const index: number = cityArr.findIndex(item => item.name === city)
@@ -19,16 +33,7 @@ function WeeklyForecastBlock () {
             `https://api.openweathermap.org/data/2.5/onecall?lat=${selectedCity.latitude}&lon=${selectedCity.longitude}&units=metric&exclude=hourly,alerts,minutely,current&appid=${API_KEY}`
           )
           const data = await response.json()
-          const date = new Date()
-          const weatherForecast = []
-          for (let i = 0; i < data.daily.length; i++) {
-            weatherForecast.push({
-              temp: Math.floor(data.daily[i].temp.day),
-              icon: data.daily[i].weather[0].icon,
-              date: date.getDate() + i + ' ' + months[date.getMonth()] + ' ' + date.getFullYear()
-            })
-          }
-          setForecast(weatherForecast)
+          setForecast(getWeeklyForecast(data))
           setLoading(true)
         } catch (e) {
           console.log(e.message)
