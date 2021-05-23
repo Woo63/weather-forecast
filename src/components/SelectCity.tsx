@@ -6,10 +6,12 @@ function SelectCity (props : any) {
   const [classNameArrow, setClassNameArrow] = useState<string>('select__head close')
   const [classNameUl, setClassNameUl] = useState<string>('select__list close')
   const [city, setCity] = useState<string>('Select city')
+  const [textColor, setTextColor] = useState<any>({ color: '#8083A4' })
 
   function onSelect (event: React.FormEvent<EventTarget>): void {
     const target = event.target as HTMLInputElement
     setCity(cityArr[Number(target.id)].name)
+    setTextColor({ color: '#2C2D76' })
   }
 
   useEffect(() => {
@@ -28,7 +30,7 @@ function SelectCity (props : any) {
   return (
         <div className="select" onClick={() => setShow(!show)}>
             <input className="select__input" type="hidden" name=""/>
-            <div className={classNameArrow} > {city} </div>
+            <div className={classNameArrow} style={textColor}> {city} </div>
             <ul className={classNameUl} onClick={(e) => onSelect(e)}>
                 {cityArr.map((item, index) =>
                     <li className="select__item" key={index} id={index.toString()}>{item.name}</li>)}

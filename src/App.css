@@ -35,8 +35,8 @@
 .main{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /*width: 100%;*/
+    align-items: center;
+    width: 100%;
     min-width: 300px;
 }
 .forecastBlock {
@@ -58,7 +58,29 @@
     min-width: 252px;
     margin-left: 24px;
 }
-
+.dailyForecastBlock__control{
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 17px;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: url("./assets/icons/24/chevron-left.svg") no-repeat center;
+    user-select: none;
+    cursor: pointer;
+}
+.dailyForecastBlock__control.prev{
+    left: 30px;
+}
+.dailyForecastBlock__control.next{
+    transform: rotate(180deg);
+    left: 631px;
+}
+.dailyForecastBlock__control:disabled{
+    opacity: 0.6;
+    cursor: auto;
+}
 .plugBlock {
     width: 252px;
     margin: 9px auto 0;
@@ -87,6 +109,10 @@
 .containerBlock{
     width: 100%;
     overflow-x: scroll;
+    position: relative;
+}
+.containerBlock::-webkit-scrollbar {
+    height: 0;
 }
 .dailyForecastBlock{
     display: inline-flex;
@@ -152,7 +178,6 @@
 .select__head, .select__list, .date__head {
     width: 100%;
     padding: 10px 0 10px 14px;
-    color: #8083A4;
     cursor: pointer;
     background: rgba(128, 131, 164, 0.06);
     border: 2px solid rgba(128, 131, 164, 0.2);
@@ -165,7 +190,7 @@
 .select__head::after {
     width: 13.41px;
     height: 8.12px;
-    background: #FFF url("./assets/icons/16/chevron-top.svg") no-repeat center / cover;
+    background: #8083A40F url("./assets/icons/16/chevron-top.svg") no-repeat center / cover;
     position: absolute;
     right: 8.08%;
     top: 26.83%;
@@ -220,14 +245,11 @@
     list-style-type: none;
 }
 
-.select__item:hover, ::placeholder {
-    background: #FFFFFF;
-    border-radius: 8px;
-    border: 2px solid rgba(128, 131, 164, 0.06);
+.select__head:active, .select__head:hover{
+    border: 2px solid #373AF5;
 }
-
-.select__list:hover {
-    background: #FFFFFF;
+.date__head:active, .date__head:hover{
+    border: 2px solid #373AF5;
 }
 
 .inputForm {
@@ -237,20 +259,25 @@
 }
 
 .date__head {
-    background: #FFFFFF;
     width: 252px;
     padding: 10px 0 10px 13px;
+    color: #2C2D76;
+}
+.date__head::placeholder, .date__head::-webkit-input-placeholder, .date__head::-moz-placeholder, .date__head:-ms-input-placeholder{
+    color: #8083A4;
+    background: rgba(128, 131, 164, 0.06);
 }
 
 .date__input {
-    background: #FFFFFF;
     position: absolute;
     width: 16px;
     height: 15px;
     border: none;
+    outline: none;
     padding: 0;
     right: 16px;
     top: 17px;
+    background: none;
 }
 
 .date__input:focus-visible, .date__head:focus-visible {
@@ -264,7 +291,7 @@
 .date__input::-webkit-calendar-picker-indicator {
     width: 16px;
     height: 15px;
-    background: #FFFFFF url("./assets/icons/16/calendar.svg") no-repeat;
+    background: #FFF url("./assets/icons/16/calendar.svg") no-repeat;
     background-size: contain;
     position: absolute;
     right: 0;
@@ -309,7 +336,7 @@
         margin-left: calc(18px + (52 - 18) * ( (100vw - 320px) / ( 1026 - 320) ));
     }
     .plugBlock {
-        margin-top: calc(9px + (36 - 9) * ( (100vw - 320px) / ( 1026 - 320) ));
+        margin-top: calc(9px + (40 - 9) * ( (100vw - 320px) / ( 1026 - 320) ));
     }
     .plugBlock__text {
         width: calc(252px + (438 - 252) * ( (100vw - 320px) / ( 1026 - 320) ));
@@ -342,10 +369,14 @@
         margin-bottom: 34px;
     }
     .plugBlock {
-        margin-bottom: 90px
+        margin-top: 64px;
+        padding-bottom: 90px
     }
     .plugBlock__text {
         width: 438px;
+    }
+    .select{
+        margin-bottom: 0;
     }
     .selectBlock{
         display: flex;
@@ -353,7 +384,7 @@
         justify-content: center;
     }
     .selectBlock > .select{
-        margin: 0 20px 24px;
+        margin: 0 20px;
     }
     .dailyForecastBlock, .forecastBlock__title, .forecastBlock > .select{
         margin-left: 58px;
@@ -361,17 +392,17 @@
     .forecastBlock__title{
         padding-top: 50px;
     }
-    .dailyForecastBlock{
-        margin-left: 52px;
-        margin-top: 30px;
-        margin-bottom: 70px;
-    }
-    .plugBlock {
-        margin-top: 36px;
-    }
+    /*.dailyForecastBlock{*/
+    /*    margin-top: 30px;*/
+    /*    margin-bottom: 70px;*/
+    /*}*/
     .dayWeatherCard.past{
         width: 544px;
-        margin-top: 30px;
+        margin-top: 54px;
+        margin-bottom: 70px;
+    }
+    .dayWeatherCard.now{
+        margin-top: 54px;
         margin-bottom: 70px;
     }
     .dayWeatherCard__icon.past{
