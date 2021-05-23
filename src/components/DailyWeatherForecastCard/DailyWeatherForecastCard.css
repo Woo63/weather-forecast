@@ -1,0 +1,86 @@
+.dayWeatherCard {
+    background: #373AF5;
+    border: 2px solid #2C2D76;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
+    border-radius: 8px;
+    position: relative;
+}
+
+.dayWeatherCard.past {
+    min-width: 252px;
+    max-width: 544px;
+    height: 238px;
+    margin: 6px auto 60px;
+}
+
+.dayWeatherCard.now {
+    width: 174px;
+    height: 238px;
+    margin: 0 16px 60px 0;
+}
+
+.dayWeatherCard__date {
+    position: absolute;
+    font-weight: bold;
+    color: #FFFFFF;
+    top: 20px;
+    left: 20px;
+}
+
+.dayWeatherCard__temp {
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.dayWeatherCard__icon.past {
+    position: absolute;
+    left: 46px;
+    top: 39px;
+    width: 160px;
+    height: 160px;
+}
+
+.dayWeatherCard__icon.now {
+    position: absolute;
+    left: 27px;
+    top: 59px;
+    width: 120px;
+    height: 120px;
+}
+
+@media (min-width: 320px) and (max-width: 1026px) {
+    .dayWeatherCard {
+        margin-top: 30px;
+        margin-bottom: 70px;
+    }
+
+    .dayWeatherCard.past {
+        width: calc(252px + (544 - 252) * ((100vw - 320px) / (1026 - 320)));
+    }
+
+    .dayWeatherCard__icon.past {
+        left: calc(46px + (192 - 46) * ((100vw - 320px) / (1026 - 320)));
+    }
+}
+
+@media (min-width: 1026px) {
+    .dayWeatherCard.past {
+        width: 544px;
+        margin-top: 54px;
+        margin-bottom: 70px;
+    }
+
+    .dayWeatherCard.now {
+        margin-top: 54px;
+        margin-bottom: 70px;
+    }
+
+    .dayWeatherCard__icon.past {
+        left: 192px;
+    }
+}

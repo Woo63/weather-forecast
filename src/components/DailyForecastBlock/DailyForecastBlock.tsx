@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import DailyWeatherForecastCard from './DailyWeatherForecastCard'
-import { IDayWeather } from '../assets/cityArray'
+import DailyWeatherForecastCard from '../DailyWeatherForecastCard/DailyWeatherForecastCard'
+import { IDayWeather } from '../../assets/cityArray'
+import './DailyForecastBlock.css'
 
 function DailyForecastBlock (props: any) {
   const [selectedDayIndex, setSelectedDayIndex] = useState<number>(0)

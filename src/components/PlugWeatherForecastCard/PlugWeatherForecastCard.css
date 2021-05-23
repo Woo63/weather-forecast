@@ -1,0 +1,45 @@
+.plugBlock {
+    width: 252px;
+    margin: 9px auto 0;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plugBlock__img {
+    width: 50vw;
+    height: 50vw;
+    max-width: 160px;
+    max-height: 160px;
+    background: url("../../assets/Placeholder/Academy-Weather-bg160.png") 100% 100% no-repeat;
+    background-size: cover;
+}
+
+.plugBlock__text {
+    font-weight: bold;
+    margin: 24px 0 0;
+    text-align: center;
+    color: #8083A4;
+    width: 252px;
+}
+
+@media (min-width: 320px) and (max-width: 1026px) {
+    .plugBlock {
+        padding-bottom: calc(60px + (90 - 60) * ( (100vw - 320px) / ( 1026 - 320) ));
+        margin-top: calc(9px + (40 - 9) * ( (100vw - 320px) / ( 1026 - 320) ));
+    }
+    .plugBlock__text {
+        width: calc(252px + (438 - 252) * ( (100vw - 320px) / ( 1026 - 320) ));
+    }
+}
+@media (min-width: 1026px) {
+    .plugBlock {
+        margin-top: 64px;
+        padding-bottom: 90px
+    }
+
+    .plugBlock__text {
+        width: 438px;
+    }
+}

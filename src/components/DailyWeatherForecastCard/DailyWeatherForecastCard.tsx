@@ -1,4 +1,5 @@
 import React from 'react'
+import './DailyWeatherForecastCard.css'
 
 function DailyWeatherForecastCard (props: any) {
   return (

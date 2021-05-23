@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import SelectCity from './SelectCity'
-import PlugWeatherForecastCard from './PlugWeatherForecastCard'
-import { API_KEY, cityArr, IDayWeather, months } from '../assets/cityArray'
-import DailyWeatherForecastCard from './DailyWeatherForecastCard'
-import InputDate from './InputDate'
+import '../NearlyForecastBlock/NearlyForecastBlock.css'
+import SelectCity from '../SelectCity/SelectCity'
+import PlugWeatherForecastCard from '../PlugWeatherForecastCard/PlugWeatherForecastCard'
+import { API_KEY, cityArr, IDayWeather, months } from '../../assets/cityArray'
+import DailyWeatherForecastCard from '../DailyWeatherForecastCard/DailyWeatherForecastCard'
+import InputDate from '../InputDate/InputDate'
 
 function PastlyForecastBlock () {
   const [city, setCity] = useState<string>('')
   const [date, setDate] = useState<string>('')
   const [time, setTime] = useState<string>('')
-  const [forecast, setForecast] = useState<IDayWeather|null>(null)
+  const [forecast, setForecast] = useState<IDayWeather | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [dateForCard, setDateFarCard] = useState<string>('')
   useEffect(() => {
     if ((city.length) && (date.length)) {
-      const index : number = cityArr.findIndex(item => item.name === city)
+      const index: number = cityArr.findIndex(item => item.name === city)
       const selectedCity = cityArr[index]
       const fetchWeather = async () => {
         try {
@@ -31,10 +32,12 @@ function PastlyForecastBlock () {
       fetchWeather()
     }
   }, [city, time])
+
   function changeStringToDate () {
     const arr = date.split(/[- /.]/)
     return arr[2] + '-' + arr[1] + '-' + arr[0]
   }
+
   useEffect(() => {
     if ((/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](2021)/).exec(date)) {
       const newDate = new Date(changeStringToDate())
@@ -47,18 +50,18 @@ function PastlyForecastBlock () {
     }
   }, [date])
   return (
-      <div className="forecastBlock">
-          <h2 className="forecastBlock__title">Forecast for a Date in the Past</h2>
-        <div className="selectBlock">
-          <SelectCity setCity={setCity}/>
-          <InputDate date={date} setDate={setDate}/>
-        </div>
-        {
-          (loading)
-            ? <DailyWeatherForecastCard forecast={forecast} className={'past'}/>
-            : <PlugWeatherForecastCard/>
-        }
+    <div className="forecastBlock">
+      <h2 className="forecastBlock__title">Forecast for a Date in the Past</h2>
+      <div className="selectBlock">
+        <SelectCity setCity={setCity}/>
+        <InputDate date={date} setDate={setDate}/>
       </div>
+      {
+        (loading)
+          ? <DailyWeatherForecastCard forecast={forecast} className={'past'}/>
+          : <PlugWeatherForecastCard/>
+      }
+    </div>
   )
 }
 

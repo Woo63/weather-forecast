@@ -1,4 +1,5 @@
 import React from 'react'
+import './PlugWeatherForecastCard.css'
 
 function PlugWeatherForecastCard () {
   return (

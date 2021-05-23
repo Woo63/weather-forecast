@@ -1,0 +1,67 @@
+.forecastBlock {
+    display: inline-block;
+    background: #FFFFFF;
+    box-shadow: 0 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
+    border-radius: 8px;
+    width: 93.7vw;
+    min-width: 300px;
+    max-width: 660px;
+    margin-bottom: 10px;
+}
+
+.forecastBlock__title {
+    color: #2C2D76;
+    width: 78.75vw;
+    max-width: 463px;
+    min-width: 252px;
+    margin-left: 24px;
+}
+
+@media (min-width: 320px) and (max-width: 1026px) {
+    .forecastBlock {
+        margin-bottom: calc(10px + (34 - 10) * ((100vw - 320px) / (1026 - 320)));
+    }
+
+    .forecastBlock__title {
+        margin-left: calc(24px + (58 - 24) * ((100vw - 320px) / (1026 - 320)));
+    }
+
+    .forecastBlock__title {
+        padding-top: calc(32px + (50 - 32) * ((100vw - 320px) / (1026 - 320)));
+    }
+
+}
+
+@media (min-width: 1026px) {
+    .forecastBlock {
+        margin-bottom: 34px;
+    }
+
+    .select {
+        margin-bottom: 0;
+    }
+
+    .selectBlock {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .selectBlock > .select {
+        margin: 0 20px;
+    }
+
+    .forecastBlock__title, .forecastBlock > .select {
+        margin-left: 58px;
+    }
+
+    .forecastBlock__title {
+        padding-top: 50px;
+    }
+}
+
+@media (min-width: 1300px) {
+    .forecastBlock {
+        margin: 0 15px 34px;
+    }
+}

@@ -1,9 +1,7 @@
 .App {
-    background: url("./assets/Background/Academy-Weather forecast-Bg-mob-up.png") right top no-repeat,
+    background: url("https://github.com/Woo63/weather-forecast/blob/main/src/assets/Background/Academy-Weather%20forecast-Bg-mob-up.png?raw=true") right top no-repeat,
     url("./assets/Background/Academy-Weather forecast-Bg-mob-down.png") left bottom no-repeat;
     background-size: 100%;
-    /*width: 100%;*/
-    /*height: 100%;*/
     min-height: 100vh;
     min-width: 320px;
     display: flex;
@@ -16,289 +14,29 @@
     font-size: 16px;
     line-height: 24px;
 }
-.header{
+
+.header {
     min-width: 240px;
     width: 73vw;
     max-width: 755px;
-    /*margin: 0 auto;*/
 }
-
 .title {
     color: #FFFFFF;
     margin-bottom: 24px;
     padding-top: 32px;
 }
-.header div{
+
+.header div {
     text-align: right;
     line-height: 0.7;
 }
-.main{
+
+.main {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     min-width: 300px;
-}
-.forecastBlock {
-    display: inline-block;
-    background: #FFFFFF;
-    box-shadow: 0 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
-    border-radius: 8px;
-    width: 93.7vw;
-    min-width: 300px;
-    max-width: 660px;
-    /*margin: 0 auto 10px;*/
-    margin-bottom: 10px;
-}
-
-.forecastBlock__title {
-    color: #2C2D76;
-    width: 78.75vw;
-    max-width: 463px;
-    min-width: 252px;
-    margin-left: 24px;
-}
-.dailyForecastBlock__control{
-    position: absolute;
-    top: 50%;
-    width: 10px;
-    height: 17px;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    background: url("./assets/icons/24/chevron-left.svg") no-repeat center;
-    user-select: none;
-    cursor: pointer;
-}
-.dailyForecastBlock__control.prev{
-    left: 30px;
-}
-.dailyForecastBlock__control.next{
-    transform: rotate(180deg);
-    left: 631px;
-}
-.dailyForecastBlock__control:disabled{
-    opacity: 0.6;
-    cursor: auto;
-}
-.plugBlock {
-    width: 252px;
-    margin: 9px auto 0;
-    padding-bottom: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.plugBlock__img {
-    width: 50vw;
-    height: 50vw;
-    max-width: 160px;
-    max-height: 160px;
-    background: url("./assets/Placeholder/Academy-Weather-bg160.png") 100% 100% no-repeat;
-    background-size: cover;
-}
-
-.plugBlock__text {
-    font-weight: bold;
-    margin: 24px 0 0;
-    text-align: center;
-    color: #8083A4;
-    width: 252px;
-}
-.containerBlock{
-    width: 100%;
-    overflow-x: scroll;
-    position: relative;
-}
-.containerBlock::-webkit-scrollbar {
-    height: 0;
-}
-.dailyForecastBlock{
-    display: inline-flex;
-    margin-left: 24px;
-}
-.dayWeatherCard{
-    background: #373AF5;
-    border: 2px solid #2C2D76;
-    box-sizing: border-box;
-    box-shadow: 0 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
-    border-radius: 8px;
-    position: relative;
-}
-.dayWeatherCard.past{
-    width: 75vw;
-    min-width: 252px;
-    max-width: 544px;
-    height: 238px;
-    margin: 6px auto 60px;
-}
-.dayWeatherCard.now{
-    width: 174px;
-    height: 238px;
-    margin: 0 16px 60px 0;
-}
-.dayWeatherCard__date{
-    position: absolute;
-    font-weight: bold;
-    color: #FFFFFF;
-    top: 20px;
-    left: 20px;
-}
-.dayWeatherCard__temp{
-    margin: 0;
-    padding: 0;
-    color: #FFFFFF;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-}
-.dayWeatherCard__icon.past{
-    position: absolute;
-    left: 46px;
-    top: 39px;
-    width: 160px;
-    height: 160px;
-}
-.dayWeatherCard__icon.now{
-    position: absolute;
-    left: 27px;
-    top: 59px;
-    width: 120px;
-    height: 120px;
-}
-.select {
-    position: relative;
-    display: block;
-    width: 252px;
-    margin-left: 24px;
-    margin-bottom: 24px;
-}
-
-.select__head, .select__list, .date__head {
-    width: 100%;
-    padding: 10px 0 10px 14px;
-    cursor: pointer;
-    background: rgba(128, 131, 164, 0.06);
-    border: 2px solid rgba(128, 131, 164, 0.2);
-    box-sizing: border-box;
-    border-radius: 8px;
-    text-align: left;
-
-}
-
-.select__head::after {
-    width: 13.41px;
-    height: 8.12px;
-    background: #8083A40F url("./assets/icons/16/chevron-top.svg") no-repeat center / cover;
-    position: absolute;
-    right: 8.08%;
-    top: 26.83%;
-    transform: translateY(50%);
-    content: '';
-    display: block;
-    transition: .2s ease-in;
-}
-
-.select__head.close::after {
-    transform: translateY(50%) rotate(180deg);
-}
-
-.select__list.close {
-    display: none;
-}
-
-.select__list {
-    position: absolute;
-    padding: 6px;
-    top: 100%;
-    left: 0;
-    right: 0;
-    max-height: 160px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    box-shadow: 0 2px 4px rgba(4, 5, 73, 0.16), 14px 14px 20px rgba(5, 6, 114, 0.08);
-    z-index: 100;
-    margin: 12px 0 0;
-    background: #FFFFFF;
-    overscroll-behavior: contain;
-}
-
-.select__list::-webkit-scrollbar {
-    width: 4px;
-    padding: 20px;
-    height: 28px;
-    background-color: #FFFFFF;
-}
-
-.select__list::-webkit-scrollbar-thumb {
-    border-radius: 38px;
-    background-color: rgba(128, 131, 164, 0.4);
-}
-
-.select__item {
-    color: #8083A4;
-    position: relative;
-    padding: 10px 5px;
-    border: 1px solid #FFFFFF;
-    cursor: pointer;
-    list-style-type: none;
-}
-
-.select__head:active, .select__head:hover{
-    border: 2px solid #373AF5;
-}
-.date__head:active, .date__head:hover{
-    border: 2px solid #373AF5;
-}
-
-.inputForm {
-    position: relative;
-    width: 252px;
-    margin: 0 auto;
-}
-
-.date__head {
-    width: 252px;
-    padding: 10px 0 10px 13px;
-    color: #2C2D76;
-}
-.date__head::placeholder, .date__head::-webkit-input-placeholder, .date__head::-moz-placeholder, .date__head:-ms-input-placeholder{
-    color: #8083A4;
-    background: rgba(128, 131, 164, 0.06);
-}
-
-.date__input {
-    position: absolute;
-    width: 16px;
-    height: 15px;
-    border: none;
-    outline: none;
-    padding: 0;
-    right: 16px;
-    top: 17px;
-    background: none;
-}
-
-.date__input:focus-visible, .date__head:focus-visible {
-    outline: none;
-}
-
-.date__input::-webkit-inner-spin-button, .date__input::-webkit-clear-button {
-    display: none;
-}
-
-.date__input::-webkit-calendar-picker-indicator {
-    width: 16px;
-    height: 15px;
-    background: #FFF url("./assets/icons/16/calendar.svg") no-repeat;
-    background-size: contain;
-    position: absolute;
-    right: 0;
-    top: 0;
-    content: '';
-    display: block;
-    padding: 0;
 }
 
 .footer {
@@ -309,123 +47,50 @@
     text-align: center;
     margin-top: 78px;
     margin-bottom: 16px;
-    flex-grow:1
+    flex-grow: 1
 }
-
 
 
 @media (min-width: 320px) and (max-width: 1026px) {
     .title {
-        font-size: calc(32px + (102 - 32) * ( (100vw - 320px) / ( 1026 - 320) ));
-        margin-bottom: calc(24px + (65 - 24) * ( (100vw - 320px) / ( 1026 - 320) ));
-        padding-top: calc(32px + (102 - 32) * ( (100vw - 320px) / ( 1026 - 320) ));
-    }
-    .forecastBlock{
-        margin-bottom: calc(10px + (34 - 10) * ( (100vw - 320px) / ( 1026 - 320) ));
-    }
-    .plugBlock {
-        padding-bottom: calc(60px + (90 - 60) * ( (100vw - 320px) / ( 1026 - 320) ));
-    }
-    .dailyForecastBlock, .forecastBlock__title, .select{
-        margin-left: calc(24px + (58 - 24) * ( (100vw - 320px) / ( 1026 - 320) ));
-    }
-    .forecastBlock__title{
-        padding-top: calc(32px + (50 - 32) * ( (100vw - 320px) / ( 1026 - 320) ));
-    }
-    .dailyForecastBlock{
-        margin-left: calc(18px + (52 - 18) * ( (100vw - 320px) / ( 1026 - 320) ));
-    }
-    .plugBlock {
-        margin-top: calc(9px + (40 - 9) * ( (100vw - 320px) / ( 1026 - 320) ));
-    }
-    .plugBlock__text {
-        width: calc(252px + (438 - 252) * ( (100vw - 320px) / ( 1026 - 320) ));
-    }
-    .dayWeatherCard{
-        margin-top: 30px;
-        margin-bottom: 70px;
-    }
-    /*.dayWeatherCard.past{*/
-    /*    width: calc(252px + (544 - 252) * ( (100vw - 320px) / ( 1026 - 320) ));*/
-    /*}*/
-    .dayWeatherCard__icon.past{
-        left: calc(46px + (192 - 46) * ( (100vw - 320px) / ( 1026 - 320) ));
+        font-size: calc(32px + (102 - 32) * ((100vw - 320px) / (1026 - 320)));
+        margin-bottom: calc(24px + (65 - 24) * ((100vw - 320px) / (1026 - 320)));
+        padding-top: calc(32px + (102 - 32) * ((100vw - 320px) / (1026 - 320)));
     }
 }
-@media (min-width: 600px){
-    .App{
+
+@media (min-width: 600px) {
+    .App {
         background: url("./assets/Background/Academy-Weather forecast-Bg-up-1.png") right top no-repeat,
         url("./assets/Background/Academy-Weather forecast-Bg-buttom.png") left bottom no-repeat;
         background-size: 100vw auto;
     }
 }
-@media (min-width: 1026px){
+
+@media (min-width: 1026px) {
     .title {
         font-size: 102px;
         margin-bottom: 65px;
         padding-top: 65px;
     }
-    .forecastBlock{
-        margin-bottom: 34px;
-    }
-    .plugBlock {
-        margin-top: 64px;
-        padding-bottom: 90px
-    }
-    .plugBlock__text {
-        width: 438px;
-    }
-    .select{
-        margin-bottom: 0;
-    }
-    .selectBlock{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-    .selectBlock > .select{
-        margin: 0 20px;
-    }
-    .dailyForecastBlock, .forecastBlock__title, .forecastBlock > .select{
-        margin-left: 58px;
-    }
-    .forecastBlock__title{
-        padding-top: 50px;
-    }
-    /*.dailyForecastBlock{*/
-    /*    margin-top: 30px;*/
-    /*    margin-bottom: 70px;*/
-    /*}*/
-    .dayWeatherCard.past{
-        width: 544px;
-        margin-top: 54px;
-        margin-bottom: 70px;
-    }
-    .dayWeatherCard.now{
-        margin-top: 54px;
-        margin-bottom: 70px;
-    }
-    .dayWeatherCard__icon.past{
-        left: 192px;
-    }
+
     .footer {
         display: flex;
         align-items: flex-end;
         justify-content: center;
     }
 }
-@media (min-width: 1300px){
-    .main{
+
+@media (min-width: 1300px) {
+    .main {
         display: flex;
         flex-direction: row;
         justify-content: center;
     }
-    .forecastBlock{
-        margin: 0 15px 34px;
-    }
 }
-@media (min-width: 1440px){
-    .App{
+
+@media (min-width: 1440px) {
+    .App {
         background: url("./assets/Background/Academy-Weather forecast-Bg-up.png") right top no-repeat,
         url("./assets/Background/Academy-Weather forecast-Bg-buttom@2x.png") left bottom no-repeat;
         background-size: 100vw 100%;

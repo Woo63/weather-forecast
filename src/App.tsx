@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
-import PastlyForecastBlock from './components/PastlyForecastBlock'
-import NearlyForecastBlock from './components/NearlyForecastBlock'
+import PastlyForecastBlock from './components/PastlyForecastBlock/PastlyForecastBlock'
+import NearlyForecastBlock from './components/NearlyForecastBlock/NearlyForecastBlock'
 
 function App () {
   return (

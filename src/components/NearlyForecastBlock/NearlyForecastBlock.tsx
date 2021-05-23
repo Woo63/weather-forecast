@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import SelectCity from './SelectCity'
-import PlugWeatherForecastCard from './PlugWeatherForecastCard'
-import { cityArr, API_KEY, IDayWeather, months } from '../assets/cityArray'
-import DailyForecastBlock from './DailyForecastBlock'
+import './NearlyForecastBlock.css'
+import SelectCity from '../SelectCity/SelectCity'
+import PlugWeatherForecastCard from '../PlugWeatherForecastCard/PlugWeatherForecastCard'
+import { cityArr, API_KEY, IDayWeather, months } from '../../assets/cityArray'
+import DailyForecastBlock from '../DailyForecastBlock/DailyForecastBlock'
 
 function NearlyForecastBlock () {
   const [city, setCity] = useState<string>('')
@@ -10,7 +11,7 @@ function NearlyForecastBlock () {
   const [loading, setLoading] = useState<boolean>(false)
   useEffect(() => {
     if (city.length) {
-      const index : number = cityArr.findIndex(item => item.name === city)
+      const index: number = cityArr.findIndex(item => item.name === city)
       const selectedCity = cityArr[index]
       const fetchWeather = async () => {
         try {
@@ -21,7 +22,11 @@ function NearlyForecastBlock () {
           const date = new Date()
           const weatherForecast = []
           for (let i = 0; i < data.daily.length; i++) {
-            weatherForecast.push({ temp: Math.floor(data.daily[i].temp.day), icon: data.daily[i].weather[0].icon, date: date.getDate() + i + ' ' + months[date.getMonth()] + ' ' + date.getFullYear() })
+            weatherForecast.push({
+              temp: Math.floor(data.daily[i].temp.day),
+              icon: data.daily[i].weather[0].icon,
+              date: date.getDate() + i + ' ' + months[date.getMonth()] + ' ' + date.getFullYear()
+            })
           }
           setForecast(weatherForecast)
           setLoading(true)
@@ -33,15 +38,15 @@ function NearlyForecastBlock () {
     }
   }, [city])
   return (
-      <div className="forecastBlock">
-          <h2 className="forecastBlock__title">7 Days Forecast</h2>
-          <SelectCity setCity={setCity}/>
-        {
-          (loading)
-            ? <DailyForecastBlock forecast={forecast} />
-            : <PlugWeatherForecastCard/>
-        }
-      </div>
+    <div className="forecastBlock">
+      <h2 className="forecastBlock__title">7 Days Forecast</h2>
+      <SelectCity setCity={setCity}/>
+      {
+        (loading)
+          ? <DailyForecastBlock forecast={forecast}/>
+          : <PlugWeatherForecastCard/>
+      }
+    </div>
   )
 }
 
