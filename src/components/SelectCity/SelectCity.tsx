@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { cityArr } from '../../assets/constants'
+import { cityArr } from '../../constants'
 import './SelectCity.css'
 
 function SelectCity (props : any) {
@@ -9,8 +9,8 @@ function SelectCity (props : any) {
   const [city, setCity] = useState<string>('Select city')
   const [textColor, setTextColor] = useState<any>({ color: '#8083A4' })
 
-  function onSelect (event: React.FormEvent<EventTarget>): void {
-    const target = event.target as HTMLInputElement
+  function onSelectCity (selectEvent: React.FormEvent<EventTarget>): void {
+    const target = selectEvent.target as HTMLInputElement
     setCity(cityArr[Number(target.id)].name)
     setTextColor({ color: '#2C2D76' })
   }
@@ -28,11 +28,12 @@ function SelectCity (props : any) {
     setClassNameArrow('select__head close')
     setClassNameUl('select__list close')
   }
+
   return (
         <div className="select" onClick={() => setShow(!show)}>
             <input className="select__input" type="hidden" name=""/>
             <div className={classNameArrow} style={textColor}> {city} </div>
-            <ul className={classNameUl} onClick={(e) => onSelect(e)}>
+            <ul className={classNameUl} onClick={(e) => onSelectCity(e)}>
                 {cityArr.map((item, index) =>
                     <li className="select__item" key={index} id={index.toString()}>{item.name}</li>)}
             </ul>

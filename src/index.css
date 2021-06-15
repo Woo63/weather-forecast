@@ -1,96 +1,131 @@
 @font-face {
-  font-family: "Ubuntu";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Ubuntu"),
-  url("assets/Fonts/Ubuntu-Regular.ttf") format("ttf");
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Ubuntu"),
+    url("assets/Fonts/Ubuntu-Regular.ttf") format("ttf");
 }
+
 @font-face {
-  font-family: "Ubuntu";
-  font-style: italic;
-  font-weight: normal;
-  src: local("Ubuntu"),
-  url("assets/Fonts/Ubuntu-Italic.ttf") format("ttf");
+    font-family: "Ubuntu";
+    font-style: italic;
+    font-weight: normal;
+    src: local("Ubuntu"),
+    url("assets/Fonts/Ubuntu-Italic.ttf") format("ttf");
 }
+
 @font-face {
-  font-family: "Ubuntu";
-  font-style: normal;
-  font-weight: bold;
-  src: local("Ubuntu"),
-  url("assets/Fonts/Ubuntu-Bold.ttf") format("ttf");
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: bold;
+    src: local("Ubuntu"),
+    url("assets/Fonts/Ubuntu-Bold.ttf") format("ttf");
 }
+
 @font-face {
-  font-family: "Ubuntu";
-  font-style: italic;
-  font-weight: bold;
-  src: local("Ubuntu"),
-  url("assets/Fonts/Ubuntu-BoldItalic.ttf") format("ttf");
+    font-family: "Ubuntu";
+    font-style: italic;
+    font-weight: bold;
+    src: local("Ubuntu"),
+    url("assets/Fonts/Ubuntu-BoldItalic.ttf") format("ttf");
 }
+
 @font-face {
-  font-family: "Ubuntu";
-  font-style: normal;
-  font-weight: 100;
-  src: local("Ubuntu"),
-  url("assets/Fonts/Ubuntu-Light.ttf") format("ttf");
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 100;
+    src: local("Ubuntu"),
+    url("assets/Fonts/Ubuntu-Light.ttf") format("ttf");
 }
+
 @font-face {
-  font-family: "Ubuntu";
-  font-style: italic;
-  font-weight: 100;
-  src: local("Ubuntu"),
-  url("assets/Fonts/Ubuntu-LightItalic.ttf") format("ttf");
+    font-family: "Ubuntu";
+    font-style: italic;
+    font-weight: 100;
+    src: local("Ubuntu"),
+    url("assets/Fonts/Ubuntu-LightItalic.ttf") format("ttf");
 }
+
 @font-face {
-  font-family: "Ubuntu";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Ubuntu"),
-  url("/src/assets/Fonts/Ubuntu-Medium.ttf") format("ttf");
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 500;
+    src: local("Ubuntu"),
+    url("/src/assets/Fonts/Ubuntu-Medium.ttf") format("ttf");
 }
+
 @font-face {
-  font-family: "Ubuntu";
-  font-style: italic;
-  font-weight: 500;
-  src: local("Ubuntu"),
-  url("assets/Fonts/Ubuntu-MediumItalic.ttf") format("ttf");
+    font-family: "Ubuntu";
+    font-style: italic;
+    font-weight: 500;
+    src: local("Ubuntu"),
+    url("assets/Fonts/Ubuntu-MediumItalic.ttf") format("ttf");
 }
+
+html {
+    font-family: Ubuntu, sans-serif;
+    min-height: 100%;
+    background: url("https://github.com/Woo63/weather-forecast/blob/main/src/assets/Background/Academy-Weather%20forecast-Bg-mob-up.png?raw=true") right top no-repeat,
+    url("./assets/Background/Academy-Weather forecast-Bg-mob-down.png") left bottom no-repeat #373AF5;
+    background-size: 100%;
+    min-width: 320px;
+}
+
+@media (min-width: 600px) {
+    html {
+        background: url("./assets/Background/Academy-Weather forecast-Bg-up-1.png") right top no-repeat,
+        url("./assets/Background/Academy-Weather forecast-Bg-buttom.png") left bottom no-repeat #373AF5;
+        background-size: 100vw auto;
+    }
+}
+
+@media (min-width: 1440px) {
+    html {
+        background: url("./assets/Background/Academy-Weather forecast-Bg-up.png") right top no-repeat,
+        url("./assets/Background/Academy-Weather forecast-Bg-buttom@2x.png") left bottom no-repeat #373AF5;
+        background-size: 100vw 100%;
+    }
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  font-family: Ubuntu, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #373AF5;
+    margin: 0;
+    width: 100%;
 }
-h1{
-  margin: 0;
-  font-size: 32px;
-  line-height: 1;
+
+h1 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1;
 }
+
 h2 {
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 32px;
-  padding: 32px 0;
-  margin: 0;
-  text-align: left;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 32px;
+    padding: 32px 0;
+    margin: 0;
+    text-align: left;
 }
-footer, header, main{
-  padding: 0;
-  margin: 0;
+
+footer, header, main {
+    padding: 0;
+    margin: 0;
 }
-input{
-  -webkit-appearance: none;
+
+input {
+    -webkit-appearance: none;
 }
-button{
-  outline: none;
-  border: none;
-  padding: 0;
+
+button {
+    outline: none;
+    border: none;
+    padding: 0;
 }
+
 button:active, button:focus {
-  outline: none;
+    outline: none;
 }
+
 button::-moz-focus-inner {
-  border: 0;
+    border: 0;
 }

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import DailyWeatherForecastCard from '../OneDayForecastCard/OneDayForecastCard'
-import { IDayWeather } from '../../assets/constants'
+import { IDayWeather } from '../../constants'
 import './WeeklyForecastGroup.css'
 
 function WeeklyForecastGroup (props: any) {
   const [selectedDayIndex, setSelectedDayIndex] = useState<number>(0)
-  const [showButton, setShowButton] = useState<boolean>(true)
+  const [showArrowButtons, setShowArrowButtons] = useState<boolean>(true)
   const [disabledNext, setDisabledNext] = useState<boolean>(false)
   const [disabledPrev, setDisabledPrev] = useState<boolean>(true)
   const rightBound: number = 5
   const leftBound: number = 0
-  function changeDayIndex (next: boolean):void {
+  const desktopWidthThreshold = 1400
+
+  function changeDayIndex (next: boolean): void {
     if (next) {
       if (selectedDayIndex < rightBound) {
         setSelectedDayIndex(selectedDayIndex + 1)
@@ -29,39 +31,46 @@ function WeeklyForecastGroup (props: any) {
       }
     }
   }
-  const desktopWidthThreshold = 1400
-  function showArrows ():void {
-    if ((document.documentElement.clientWidth > desktopWidthThreshold) && (!showButton)) {
-      setShowButton(true)
+
+  function showArrows (): void {
+    if ((document.documentElement.clientWidth > desktopWidthThreshold) && (!showArrowButtons)) {
+      setShowArrowButtons(true)
+      document.getElementsByClassName('dailyForecastBlock__control')[0].removeAttribute('hidden')
+      document.getElementsByClassName('dailyForecastBlock__control')[1].removeAttribute('hidden')
     }
-    if ((showButton) && (document.documentElement.clientWidth < desktopWidthThreshold)) {
-      setShowButton(false)
+    if ((showArrowButtons) && (document.documentElement.clientWidth < desktopWidthThreshold)) {
+      setShowArrowButtons(false)
+      document.getElementsByClassName('dailyForecastBlock__control')[0].setAttribute('hidden', 'true')
+      document.getElementsByClassName('dailyForecastBlock__control')[1].setAttribute('hidden', 'true')
     }
   }
-  function selectedFormCard (index: number, item: IDayWeather): any {
-    if (showButton) {
-      if ((index >= selectedDayIndex) && (index < selectedDayIndex + 3)) return <DailyWeatherForecastCard forecast={item} className={'now'} key={index}/>
+
+  /*
+  * selection of the number of displaying weather cards depending on the size of the screen (showArrowButtons) */
+  function selectedFormCard (index: number, item: IDayWeather) {
+    if (showArrowButtons) {
+      if ((index >= selectedDayIndex) && (index < selectedDayIndex + 3)) {
+        return <DailyWeatherForecastCard forecast={item} className={'now'} key={index}/>
+      }
     } else {
       return <DailyWeatherForecastCard forecast={item} className={'now'} key={index}/>
     }
   }
+
   useEffect(() => {
     showArrows()
     window.addEventListener('resize', showArrows)
   })
+
   return (
     <div className="dailyForecastBlock">
       <div className="dailyForecastBlock__cards">
         {props.forecast.map((item: IDayWeather, index: number) => selectedFormCard(index, item))}
       </div>
-      {
-        (showButton)
-          ? <>
-            <button className="dailyForecastBlock__control prev" onClick={() => changeDayIndex(false)} disabled={disabledPrev}/>
-            <button className="dailyForecastBlock__control next" onClick={() => changeDayIndex(true)} disabled={disabledNext}/>
-            </>
-          : <></>
-      }
+      <button className="dailyForecastBlock__control prev" onClick={() => changeDayIndex(false)}
+              disabled={disabledPrev}/>
+      <button className="dailyForecastBlock__control next" onClick={() => changeDayIndex(true)}
+              disabled={disabledNext}/>
     </div>
   )
 }
