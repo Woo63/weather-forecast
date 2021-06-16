@@ -1,7 +1,7 @@
 import React from 'react'
-import './PlugWeatherForecastCard.css'
+import './WeatherPlaceholder.css'
 
-function PlugWeatherForecastCard () {
+function WeatherPlaceholder () {
   return (
         <div className="plugBlock">
             <div className="plugBlock__img" />
@@ -10,4 +10,4 @@ function PlugWeatherForecastCard () {
   )
 }
 
-export default PlugWeatherForecastCard
+export default WeatherPlaceholder

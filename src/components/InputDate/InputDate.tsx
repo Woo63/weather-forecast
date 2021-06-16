@@ -1,6 +1,6 @@
 import React from 'react'
 import './InputDate.css'
-import { dateToFormatString } from '../../utils'
+import { dateToFormatString } from '../../utils/utils'
 
 function InputDate (props: any) {
   return (

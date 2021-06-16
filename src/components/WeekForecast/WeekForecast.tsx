@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import './ForecastBlock.css'
 import SelectCity from '../SelectCity/SelectCity'
-import PlugWeatherForecastCard from '../PlugWeatherForecastCard/PlugWeatherForecastCard'
+import WeatherPlaceholder from '../WeatherPlaceholder/WeatherPlaceholder'
 import { IDayWeather } from '../../constants'
-import DailyForecastBlock from '../WeeklyForecastGroup/WeeklyForecastGroup'
-import { fetchWeekWeather } from '../../requestWeather'
-import { getSelectCity } from '../../utils'
+import WeekWeatherCards from '../WeekWeatherCards/WeekWeatherCards'
+import { fetchWeekWeather } from '../../RequestWeather'
+import { getSelectedCity } from '../../utils/utils'
 
-function WeeklyForecastBlock () {
+function WeekForecast () {
   const [city, setCity] = useState<string>('')
   const [forecast, setForecast] = useState<IDayWeather[]>([])
   const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     if (city.length) {
-      const selectedCity = getSelectCity(city)
+      const selectedCity = getSelectedCity(city)
       fetchWeekWeather(selectedCity, setForecast, setLoading).then()
     }
   }, [city])
@@ -25,11 +25,11 @@ function WeeklyForecastBlock () {
       <SelectCity setCity={setCity}/>
       {
         (loading)
-          ? <DailyForecastBlock forecast={forecast}/>
-          : <PlugWeatherForecastCard/>
+          ? <WeekWeatherCards forecast={forecast}/>
+          : <WeatherPlaceholder/>
       }
     </section>
   )
 }
 
-export default WeeklyForecastBlock
+export default WeekForecast

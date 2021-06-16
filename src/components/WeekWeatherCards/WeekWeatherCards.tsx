@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import DailyWeatherForecastCard from '../OneDayForecastCard/OneDayForecastCard'
+import DailyWeatherForecastCard from '../WeatherCard/WeatherCard'
 import { IDayWeather } from '../../constants'
-import './WeeklyForecastGroup.css'
+import './WeekWeatherCards.css'
 
-function WeeklyForecastGroup (props: any) {
+function WeekWeatherCards (props: { forecast: IDayWeather[]}) {
   const [selectedDayIndex, setSelectedDayIndex] = useState<number>(0)
   const [showArrowButtons, setShowArrowButtons] = useState<boolean>(true)
   const [disabledNext, setDisabledNext] = useState<boolean>(false)
   const [disabledPrev, setDisabledPrev] = useState<boolean>(true)
   const rightBound: number = 5
   const leftBound: number = 0
-  const desktopWidthThreshold = 1400
+  const desktopWidthThreshold: number = 1400
 
   function changeDayIndex (next: boolean): void {
     if (next) {
@@ -75,4 +75,4 @@ function WeeklyForecastGroup (props: any) {
   )
 }
 
-export default WeeklyForecastGroup
+export default WeekWeatherCards

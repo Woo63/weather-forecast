@@ -1,36 +1,40 @@
 import React, { useEffect, useState } from 'react'
-import '../WeeklyForecastBlock/ForecastBlock.css'
+import '../WeekForecast/ForecastBlock.css'
 import SelectCity from '../SelectCity/SelectCity'
-import PlugWeatherForecastCard from '../PlugWeatherForecastCard/PlugWeatherForecastCard'
+import WeatherPlaceholder from '../WeatherPlaceholder/WeatherPlaceholder'
 import { IDayWeather, months } from '../../constants'
-import DailyWeatherForecastCard from '../OneDayForecastCard/OneDayForecastCard'
+import WeatherCard from '../WeatherCard/WeatherCard'
 import InputDate from '../InputDate/InputDate'
-import { fetchPastWeather } from '../../requestWeather'
-import { stringToFormatDate, getSelectCity } from '../../utils'
+import { stringToFormatDate, getSelectedCity } from '../../utils/utils'
+import { fetchPastWeather } from '../../RequestWeather'
 
-function PastForecastBlock () {
+function PastDateForecast () {
   const [city, setCity] = useState<string>('')
   const [date, setDate] = useState<string>('')
   const [time, setTime] = useState<string>('')
-  const [forecast, setForecast] = useState<IDayWeather | null>(null)
+  const [forecast, setForecast] = useState<IDayWeather>({
+    temp: 0,
+    icon: '',
+    date: ''
+  })
   const [loading, setLoading] = useState<boolean>(false)
-  const [dateForCard, setDateFarCard] = useState<string>('')
+  const [dateForCard, setDateForCard] = useState<string>('')
 
   useEffect(() => {
     if ((city.length) && (date.length)) {
-      const selectedCity = getSelectCity(city)
+      const selectedCity = getSelectedCity(city)
       fetchPastWeather(selectedCity, time, setForecast, setLoading, dateForCard).then()
     }
   }, [city, time])
 
   useEffect(() => {
     if ((/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](2021)/).exec(date)) {
-      const newDate = new Date(stringToFormatDate(date))
+      const selectedDate = new Date(stringToFormatDate(date))
       const nowDate = new Date()
       // проверка на попадание в нужные 5 дней, это 432000000мс
-      if (nowDate.getTime() - newDate.getTime() < 432000000) {
-        setDateFarCard(newDate.getDate() + ' ' + months[newDate.getMonth()] + ' ' + newDate.getFullYear())
-        setTime((newDate.getTime() / 1000).toString())
+      if (nowDate.getTime() - selectedDate.getTime() < 432000000) {
+        setDateForCard(selectedDate.getDate() + ' ' + months[selectedDate.getMonth()] + ' ' + selectedDate.getFullYear())
+        setTime((selectedDate.getTime() / 1000).toString())
       } else console.log('Более пяти дней назад')
     }
   }, [date])
@@ -44,11 +48,11 @@ function PastForecastBlock () {
       </div>
       {
         (loading)
-          ? <DailyWeatherForecastCard forecast={forecast} className={'past'}/>
-          : <PlugWeatherForecastCard/>
+          ? <WeatherCard forecast={forecast} className={'past'}/>
+          : <WeatherPlaceholder/>
       }
     </section>
   )
 }
 
-export default PastForecastBlock
+export default PastDateForecast

@@ -10,6 +10,20 @@ export interface IDayWeather {
     date: string
 }
 
+export interface IDayWeatherAPI {
+  temp: { day: number},
+  weather: Array<{icon: string}>
+}
+
+export interface IResponseAPI {
+  daily: Array<IDayWeatherAPI>,
+  lat: number,
+  lon: number,
+  timezone: string,
+  // eslint-disable-next-line camelcase
+  timezone_offset: number
+}
+
 export const months: string[] = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
 
 export const cityArr: ICity[] = [

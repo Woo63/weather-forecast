@@ -1,4 +1,4 @@
-import { API_KEY, ICity, IDayWeather, months } from './constants'
+import { API_KEY, ICity, IDayWeather, months, IResponseAPI, IDayWeatherAPI } from './constants'
 
 export const fetchPastWeather = async (selectedCity: ICity, time: string, setForecast: (arg: IDayWeather) => void, setLoading: (arg: boolean) => void, dateForCard: string) => {
   try {
@@ -13,10 +13,10 @@ export const fetchPastWeather = async (selectedCity: ICity, time: string, setFor
   }
 }
 
-export function getWeeklyForecast (data: any): IDayWeather[] {
+export function getWeeklyForecast (responseAPI: IResponseAPI): IDayWeather[] {
   const nowDate = new Date()
   const weatherForecast: IDayWeather[] = []
-  data.daily.map((dayWeather: any, index: number) =>
+  responseAPI.daily.map((dayWeather: IDayWeatherAPI, index: number) =>
     weatherForecast.push({
       temp: Math.floor(dayWeather.temp.day),
       icon: dayWeather.weather[0].icon,

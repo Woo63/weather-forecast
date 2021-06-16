@@ -7,7 +7,7 @@ function SelectCity (props : any) {
   const [classNameArrow, setClassNameArrow] = useState<string>('select__head close')
   const [classNameUl, setClassNameUl] = useState<string>('select__list close')
   const [city, setCity] = useState<string>('Select city')
-  const [textColor, setTextColor] = useState<any>({ color: '#8083A4' })
+  const [textColor, setTextColor] = useState<{color : string}>({ color: '#8083A4' })
 
   function onSelectCity (selectEvent: React.FormEvent<EventTarget>): void {
     const target = selectEvent.target as HTMLInputElement
