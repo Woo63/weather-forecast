@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../WeekForecast/ForecastBlock.css'
 import SelectCity from '../SelectCity/SelectCity'
 import WeatherPlaceholder from '../WeatherPlaceholder/WeatherPlaceholder'
-import { IDayWeather, months } from '../../constants'
+import { IDayWeather, months, patternInputDate } from '../../constants'
 import WeatherCard from '../WeatherCard/WeatherCard'
 import InputDate from '../InputDate/InputDate'
 import { stringToFormatDate, getSelectedCity } from '../../utils/utils'
@@ -21,14 +21,15 @@ function PastDateForecast () {
   const [dateForCard, setDateForCard] = useState<string>('')
 
   useEffect(() => {
-    if ((city.length) && (date.length)) {
+    if (city.length && date.length) {
       const selectedCity = getSelectedCity(city)
       fetchPastWeather(selectedCity, time, setForecast, setLoading, dateForCard).then()
     }
   }, [city, time])
 
   useEffect(() => {
-    if ((/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](2021)/).exec(date)) {
+    const regExpDate = new RegExp(patternInputDate)
+    if (regExpDate.exec(date)) {
       const selectedDate = new Date(stringToFormatDate(date))
       const nowDate = new Date()
       // проверка на попадание в нужные 5 дней, это 432000000мс

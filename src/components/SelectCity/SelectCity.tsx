@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { cityArr } from '../../constants'
 import './SelectCity.css'
 
-function SelectCity (props : any) {
+function SelectCity (props : {setCity: (arg: string) => void}) {
   const [show, setShow] = useState<boolean>(false)
   const [classNameArrow, setClassNameArrow] = useState<string>('select__head close')
   const [classNameUl, setClassNameUl] = useState<string>('select__list close')
@@ -21,10 +21,10 @@ function SelectCity (props : any) {
     }
   }, [city])
 
-  if ((show) && (classNameArrow !== 'select__head')) {
+  if (show && (classNameArrow !== 'select__head')) {
     setClassNameArrow('select__head')
     setClassNameUl('select__list')
-  } else if ((!show) && (classNameArrow !== 'select__head close')) {
+  } else if (!show && (classNameArrow !== 'select__head close')) {
     setClassNameArrow('select__head close')
     setClassNameUl('select__list close')
   }

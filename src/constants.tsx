@@ -54,3 +54,5 @@ export const cityArr: ICity[] = [
   }]
 
 export const API_KEY: string = '373651eef091af2d1670e866f24aa876'
+
+export const patternInputDate = '^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](2021)$'
